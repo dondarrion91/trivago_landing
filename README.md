@@ -1,6 +1,6 @@
 Proyecto Landing Page Trivago(https://github.com/dondarrion91/trivago_landing).
 
-## Available Scripts
+## Primer commit
 
-In the project directory, you can run:
+Inicializacion del esqueleto de la app.
 
