@@ -1,0 +1,47 @@
+.form-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0px;
+    form{
+        width:100%
+    }
+    p{
+        text-align: center;
+        font-size: 20px;
+        line-height: 25px;
+    }
+    .form-body{
+        display: flex;
+        justify-content: center;
+        margin: 45px 0px;
+
+        @for $i from 1 through 2 {
+            .block-#{$i} {
+                margin: 0px 10px;
+                border: 1px solid black;
+                svg{
+                    margin: 0px 10px;
+                    color: gray;
+                }
+                input{
+                    border: none;
+                    height: 100%;
+                }
+            }
+          }
+          .block-3{
+              width: 220px;
+          }
+          button{
+              margin: 0px 10px;
+              width: 100px;
+              background-color: rgb(0, 95, 129);
+              color: white;
+              border: none;
+          }
+
+
+        
+    }
+}
