@@ -72,3 +72,73 @@ Para los estilos utilice varias clases de bootstrap pero la mayoria los hice yo 
     });
 
 En la siguiente etapa voy a empezar a darle fucionalidad al formulario de busquedas, saludos.
+
+##Tercer commit: Filtro en barra de busquedas por pais y uso de react-datepicker
+
+Hice uso de un paquete llamado react-datepicker para obtener datos de las fechas de partida y llegada , declaro un estado para cada fecha con la funcion Date() y declaro para cada fecha una funcion para cambiar el dico estado.
+
+    state = {
+        startDate1: new Date(),
+        startDate2: new Date(),
+    };
+
+    handleChange1 = date => {
+        this.setState({
+          startDate1: date
+        });
+    };
+
+    handleChange2 = date => {
+        this.setState({
+          startDate2: date
+        });
+    };
+
+importo el componente Datepicker del paquete antes mencionado y le paso una propiedad selected que muestre el estado de la fecha seleccionada y un evento para manejar dicho estado.
+
+    <DatePicker
+        selected={this.state.startDate1}
+        onChange={this.handleChange1}
+    />
+        
+    <DatePicker
+        selected={this.state.startDate2}
+        onChange={this.handleChange2}
+    />
+
+Para la barra de busquedas declaro el estado con dos arrays vacias , una que tendra los items importados de un array con una lista de paises y otra lo que yo ponga en pantalla
+
+    state = {
+        initialItems: [],
+        items: []
+    }
+
+Luego una funcion que crea un array items donde introduce los elementos que coinciden con la entrada por pantalla de los datos.
+
+    filterList = (event) => {
+        let items = this.state.initialItems;
+        items = items.filter((item) => {
+          return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({items: items});
+    }
+
+Luego otra funcion que introduce los valores en los arrays declarados anteriormente
+
+    componentWillMount = () => {
+        this.setState({
+            initialItems: this.props.content,
+            items: this.props.content
+        })
+    }
+
+y por ultimo el input con el evento declarado anteriormente y un div donde imprime por pantalla cada elemento de la lista filtrada. 
+
+    <input type="text" placeholder="Search" onChange={this.filterList}/>
+    <div className="places">
+        {
+            this.state.items.map(function (item) {
+                return <div key={item}><FontAwesomeIcon icon={faMapMarkerAlt} /> {item}</div>
+            })
+        }
+    </div>

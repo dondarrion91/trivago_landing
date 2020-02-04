@@ -30,6 +30,20 @@
                 }
             }
           }
+          .block-1{
+              height: 38px;
+              
+              .places{
+                  text-align: left;
+                  width: 200px;
+              }
+          }
+          .block-2{
+              display: flex;
+              svg{
+                  align-self: center;
+              }
+          }
           .block-3{
               width: 220px;
           }
@@ -40,8 +54,16 @@
               color: white;
               border: none;
           }
-
-
+          .react-datepicker-wrapper{
+              height: 100%;
+            .react-datepicker__input-container{
+                height: 100%;
+                input{
+                    text-align: center;
+                }
+            }
+          }
+          
         
     }
 }
