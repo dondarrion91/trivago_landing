@@ -14,9 +14,14 @@ class Form extends Component{
 
     //SEARCH BAR
     state = {
-        initialItems: [],
-        items: []
-    }
+            initialItems: [],
+            items: [],
+            value: '',
+            startDate1: new Date(),
+            startDate2: new Date(),
+    };
+    
+    
     
     filterList = (event) => {
         let items = this.state.initialItems;
@@ -33,15 +38,35 @@ class Form extends Component{
         })
     }
 
+    //evento click 
+
+    
+      selectionForm = (item) => {
+        console.log(item.target.innerHTML)
+        this.setState({value: item.target.innerHTML});
+      }
+
+    //evento click
+
+    // visibilidad de la lista de paises en el filtro de busquedas
+
+    visibleList = () => {
+        let input = document.getElementById("buscador");
+        input.style.display = "block";
+    }
+
+    notVisibleList = () => {
+        let input = document.getElementById("buscador");
+        input.style.display = "none";
+    }
+
+    // visibilidad de la lista de paises en el filtro de busquedas
 
     //SEARCH BAR
 
     //Calendario
 
-    state = {
-        startDate1: new Date(),
-        startDate2: new Date(),
-    };
+    
 
     handleChange1 = date => {
         this.setState({
@@ -105,18 +130,30 @@ class Form extends Component{
 
         return(
             <div className="container-fluid form-title">
-                <form className="text-center">
+                <form action="#" method="GET" className="text-center">
                     <img src={logo} style={title} alt="Logo trivago"/>
                     <p>Encontrá tu hotel ideal y compará precios de <br/> diferentes páginas web</p>
 
                     <div className="form-body">
                         <div className="block-1">
                             <FontAwesomeIcon icon={faSearch} />
-                            <input type="text" placeholder="Search" onChange={this.filterList}/>
-                            <div className="places">
+                            <input 
+                                type="text"
+                                id="barra"
+                                placeholder="Search" 
+                                onChange={this.filterList}
+                                onFocus={this.visibleList}
+                                value={this.state.value}
+                            /> 
+                            <div className="places" id="buscador">
                                 {
-                                    this.state.items.map(function (item) {
-                                        return <div key={item}><FontAwesomeIcon icon={faMapMarkerAlt} /> {item}</div>
+                                    this.state.items.map((item) => {
+                                        return <div key={item} onClick={(item) => {
+                                            this.selectionForm(item)
+                                            this.notVisibleList()
+                                        }
+                                    }>
+                                        {item}</div>
                                     })
                                 }
                             </div>
