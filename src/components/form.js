@@ -10,8 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch , faCalendar , faUser, faUserFriends ,faUsers , faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
 //font awesome
 
-class Form extends Component{
 
+class Form extends Component{
+    
     //SEARCH BAR
     state = {
             initialItems: [],
@@ -80,7 +81,40 @@ class Form extends Component{
         });
     };
 
+    parseFecha = (fecha) => {
+        let day = fecha.getDate();
+        let month = fecha.getMonth() + 1;
+        let year = fecha.getFullYear();
+        return day + "-" + month + "-" + year;
+        
+    }
     //Calendario
+
+    //guardar estados
+
+    
+
+    stateSave = () => {
+        const estados = {
+            place: this.state.value,
+            date1: this.state.startDate1,
+            date2: this.state.startDate2
+        }
+        
+        
+    }
+
+    
+
+    //
+
+    //display tarjeta de busquedas
+
+    visibleCard = () =>{
+        let tarjeta = document.getElementById("tarjeta")
+        tarjeta.style.display = "flex";
+    }
+    //
 
     render(){
         
@@ -143,7 +177,7 @@ class Form extends Component{
                                 placeholder="Search" 
                                 onChange={this.filterList}
                                 onFocus={this.visibleList}
-                                value={this.state.value}
+                                
                             /> 
                             <div className="places" id="buscador">
                                 {
@@ -183,10 +217,22 @@ class Form extends Component{
                                 options={options}
                             />
                         </div>
-                        <button type="submit">Buscar</button>
+                        <button type="submit" onClick={() => {
+                            this.stateSave()
+                            this.visibleCard()
+                            
+                        }
+                        }>Buscar</button>
                         
                     </div>
                 </form>
+
+                <Card 
+                    place={this.state.value}
+                    date1 = {this.parseFecha(this.state.startDate1)}  
+                    date2 = {this.parseFecha(this.state.startDate2)}
+                />
+                    
                 
             </div>
             
@@ -194,7 +240,23 @@ class Form extends Component{
     }
 }
 
+class Card extends Component{
+    render(){
+        return(
+            <div className="media tarjeta" id="tarjeta">
+                <h4>Retomá tu búsqueda reciente</h4>
+                <div className="media-body">
+                    <h5 className="mt-0">{this.props.place}</h5>
+                    <p>{"fecha de llegada " + this.props.date1}</p>
+                    <p>{"fecha de salida " + this.props.date2}</p>
+                </div>
+            </div>
+        )
+    }
+    
 
+      
+}
 
 
 export default Form;

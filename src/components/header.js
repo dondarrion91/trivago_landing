@@ -1,8 +1,16 @@
 import React , {Component} from 'react';
+import moneys from '../samples/money.json';
+import { components } from 'react-select';
 
 
-export default class Header extends Component{
+
+
+class Header extends Component{
+
+        
+
     render(){
+        
         return (
             <nav className="navbar navbar-expand-lg navbar-light ">
 
@@ -13,7 +21,7 @@ export default class Header extends Component{
                     <ul className="navbar-nav">
 
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Iniciar Sesión</a>
+                            <a className="nav-link" href="https://access.trivago.com/oauth/es-AR/login">Iniciar Sesión</a>
                         </li>
 
                         <li className="nav-item dropdown">
@@ -30,7 +38,7 @@ export default class Header extends Component{
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                ARS</a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a className="dropdown-item" href="#">Action</a>
+                                <Anchor/>
                                 <a className="dropdown-item" href="#">Another </a>
                                 <a className="dropdown-item" href="#">Something</a>
                             </div>
@@ -45,3 +53,31 @@ export default class Header extends Component{
 
 } 
 
+var keys = Object.keys(moneys);
+
+class Anchor extends Component{
+    
+    state = {
+        currency: keys 
+    }
+    render(){
+        
+        console.log(keys)
+        
+         
+        
+        return(
+           <div>
+                {
+                    this.state.currency.map((item) => {
+                    return <a className="dropdown-item" href="#">{item}</a>
+                            
+                    })
+                }
+               
+           </div> 
+        )
+    }
+}
+
+export default Header;

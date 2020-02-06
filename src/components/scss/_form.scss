@@ -32,8 +32,10 @@
           }
           .block-1{
               height: 38px;
-              
               .places{
+                  background-color: gray;
+                  position: relative;
+                  z-index: 99;
                   text-align: left;
                   width: 200px;
                   display: none;

@@ -142,3 +142,12 @@ y por ultimo el input con el evento declarado anteriormente y un div donde impri
             })
         }
     </div>
+
+##Cuarto commit: Seleccion en el filtro de busquedas
+
+Agregue el evento de seleccion onClick en el filtro de busquedas.
+
+##Quinto commit: Optimizacion del filtro de busquedas y recordatorio de busquedas
+
+Introduci un bloque que recuerda las busquedas que hace el usario donde imprime el lugar y la fecha de llegada y salida ,
+agregue una galeria de imagenes y un carrousel en el cual use un plugin llamado owl-carrousel , tambien agregue un dropdown en el header con monedas de todos los paises y por ultimo una descripcion global de la pagina.

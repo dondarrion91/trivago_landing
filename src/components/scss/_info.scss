@@ -1,0 +1,8 @@
+.cuadro{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 30px;
+    h6{
+        font-size: 30px;
+    }
+}
